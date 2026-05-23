@@ -1,0 +1,36 @@
+Maximum sum of non-adjacent elements(Memoization)
+import java.util.*;
+public class Solution {
+public static int maximumNonAdjacentSum(ArrayList<Integer> nums) {
+int n = nums.size();
+int[] dp = new int[n];
+for(int i=1;i<n;i++)
+{
+dp[i]=-1;
+}
+return f(n - 1, nums, dp);
+}
+public static int f(int ind, ArrayList<Integer> nums, int[] dp) {
+if(ind == 0)
+return nums.get(0);
+if(ind < 0)
+return 0;
+if(dp[ind] != -1)
+return dp[ind];
+int pick = nums.get(ind) + f(ind - 2, nums, dp);
+int notPick = f(ind - 1, nums, dp);
+dp[ind] = Math.max(pick, notPick);
+return dp[ind];
+}
+}
+INPUT:
+2
+3
+1 2 4
+4
+2 1 4 9
+OUTPUT:
+5
+11
+TIME COMPLEXITY:O(N)
+SPACE COMPLEXITY:O(N)+O(N)
