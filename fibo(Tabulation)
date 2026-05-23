@@ -22,3 +22,27 @@ enter n value:
 the fibonacci value of n:6is8
 TIME COMPLEXITY:O(N)
 SPACE COMPLEXITY:O(N)
+    For Tabulation the optimized Space Complexity is O(1)
+import java.util.*;
+class Main{
+public static void main(String args[])
+{
+Scanner sc=new Scanner(System.in);
+System.out.println("enter n value:");
+int n=sc.nextInt();
+int prev2=0;
+int prev1=1;
+int current=0;
+for(int i=2;i<=n;i++)
+{
+current=prev1+prev2;
+prev2=prev1;
+prev1=current;
+}
+System.out.println("the fibonacci number of n"+n+"is"+current);
+}
+}
+OUTPUT:
+enter n value:
+13
+the fibonacci number of n13is233
